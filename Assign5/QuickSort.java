@@ -29,8 +29,31 @@ public class QuickSort {
 		quickSort(array,0,array.length-1);
 	}
 	
-	public static void quickSort(int[] array, int left, int right) {
+	public static void quickSort(int[] array, int start, int end) {
+		int pivot = array[end];
+		int right = start;
+		int left = right - 1;
+		int swap;
+
+		while(left<=right && right<end) {
+			if(array[right]<=pivot) {
+				left++;
+				swap = array[left];
+				array[left] = array[right];
+				array[right] = swap;
+			}
+			right++;
+			
+		}
+		left++;
+		swap = array[left];
+		array[left] = array[right];
+		array[right] = swap;
 		
+		if(left<right) {
+		quickSort(array,start,left-1);
+		quickSort(array,left+1,right);
+		}	
 		
 	}
 	
